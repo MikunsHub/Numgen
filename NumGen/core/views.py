@@ -10,6 +10,8 @@ import os
 def index(request):
     
     if request.method == "POST":
+        print("===>",os.path.dirname(os.path.abspath(__file__)))
+        root = os.path.dirname(os.path.abspath(__file__))
 
         fixedVar1 = request.POST["Fixed Var 1"]
         fixedVar1 = formatInputData(fixedVar1)
@@ -39,7 +41,7 @@ def index(request):
                 value.append(rand(i,j,var1,var2,var3))
 
         df1 = pd.DataFrame(value)
-        df1.to_csv(r"C:\Users\HP PC\Documents\PersonalProjects\Numgen\NumGen\core\static\core\combinations.csv",index=False)
+        df1.to_csv(f"{root}\static\core\combinations.csv",index=False)
         
         
         return redirect('result')
@@ -48,7 +50,8 @@ def index(request):
     return render(request, 'core/index.html',context)
 
 def result(request):
-    file_location = r"C:\Users\HP PC\Documents\PersonalProjects\Numgen\NumGen\core\static\core\combinations.csv"
+    root = os.path.dirname(os.path.abspath(__file__))
+    file_location = f"{root}\static\core\combinations.csv"
     return serve(request, os.path.basename(file_location), os.path.dirname(file_location))
 
 
