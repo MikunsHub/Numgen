@@ -1,0 +1,1 @@
+web gunicorn NumGen.wsgi:application --log-file -
