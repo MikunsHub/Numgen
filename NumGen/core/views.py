@@ -10,7 +10,7 @@ import os
 def index(request):
     
     if request.method == "POST":
-        print("===>",os.path.dirname(os.path.abspath(__file__)))
+        #file root
         root = os.path.dirname(os.path.abspath(__file__))
 
         fixedVar1 = request.POST["Fixed Var 1"]
