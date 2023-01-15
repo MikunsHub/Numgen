@@ -39,10 +39,9 @@ def index(request):
                     continue
                 # create a dataframe for each value if i and j and append it to the existing csv
                 value.append(rand(i,j,var1,var2,var3))
-
+        # create a csv file to store result 
         df1 = pd.DataFrame(value)
         df1.to_csv(f"{root}\static\core\combinations.csv",index=False)
-        
         
         return redirect('result')
         
